@@ -4,7 +4,6 @@ import './assets/globals.css'
 function App() {
   return (
     <div>
-      hii
       <Home />
     </div>
   )
