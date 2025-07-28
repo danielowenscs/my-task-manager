@@ -15,7 +15,7 @@ function onDelete(id) {
 
 export default function TodoList({ todos = defaultTodos }) {
   return (
-    <div className="border rounded-md mt-4">
+    <div className="todo-list">
       {todos.map(todo => (
         <TodoItem
           key={todo.id}
