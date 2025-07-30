@@ -38,7 +38,6 @@ export default function Auth() {
       ) : (
         <>
           <p>Signed in as: {user.displayName}</p>
-          <img src={user.photoURL} alt="Profile" style={{ width: 40, borderRadius: '50%' }} />
           <button onClick={logOut}>Log Out</button>
         </>
       )}
