@@ -1,4 +1,4 @@
-import TodoList from '../components/TodoList'
+import TodoList from '../components/TodoList/TodoList'
 import { useAuth } from '../hooks/useAuth'
 import NavBar from '../components/NavBar/NavBar'
 
@@ -13,7 +13,6 @@ export default function Home() {
 
   return (
     <div>
-      <h1>My Task Manager</h1>
        <NavBar />
       <TodoList />
     </div>

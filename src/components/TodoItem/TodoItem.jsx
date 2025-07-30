@@ -1,5 +1,6 @@
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
-import { db } from '../firebase'
+import { db } from '../../firebase'
+import styles from './TodoItem.module.css'
 
 export default function TodoItem({ todo }) {
   if (!todo || !todo.text) return null
@@ -15,14 +16,14 @@ export default function TodoItem({ todo }) {
   }
 
   return (
-    <div className="todo-item">
+    <div className={styles.card}>
       <div
         onClick={handleToggle}
-        className={`todo-text ${todo.completed ? 'completed' : ''}`}
+        className={`${styles.title} ${todo.completed ? styles.completed : ''}`}
       >
         {todo.text}
       </div>
-      <button className="delete-btn" onClick={handleDelete}>
+      <button className={styles.deleteBtn} onClick={handleDelete}>
         ✕
       </button>
     </div>

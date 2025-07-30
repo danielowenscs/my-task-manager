@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-default);
+  width: 100%;
+  max-width: 600px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-button);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.deleteBtn {
+  background: var(--color-button);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.deleteBtn:hover {
+  background: var(--color-button-hover);
+}
