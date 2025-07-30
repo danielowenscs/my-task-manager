@@ -1,20 +1,30 @@
 import { useEffect, useState } from 'react'
-import TodoItem from './TodoItem'
 import { db, auth } from '../firebase'
 import { collection, query, where, onSnapshot } from 'firebase/firestore'
+import { onAuthStateChanged } from 'firebase/auth'
+import TodoItem from './TodoItem'
 
 export default function TodoList() {
   const [todos, setTodos] = useState([])
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
-    if (!auth.currentUser) return
+    const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+
+    return () => unsubscribeAuth()
+  }, [])
+
+  useEffect(() => {
+    if (!user) return
 
     const q = query(
       collection(db, 'todos'),
-      where('userId', '==', auth.currentUser.uid)
+      where('userId', '==', user.uid)
     )
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
+    const unsubscribeTodos = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
@@ -22,26 +32,13 @@ export default function TodoList() {
       setTodos(data)
     })
 
-    return () => unsubscribe()
-  }, [auth.currentUser])
-
-  function onToggle(id) {
-    console.log('Toggle todo with id:', id)
-  }
-
-  function onDelete(id) {
-    console.log('Delete todo with id:', id)
-  }
+    return () => unsubscribeTodos()
+  }, [user])
 
   return (
     <div className="todo-list">
       {todos.map(todo => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onToggle={onToggle}
-          onDelete={onDelete}
-        />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   )

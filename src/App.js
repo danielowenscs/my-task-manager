@@ -1,16 +1,27 @@
-import Home from './pages/HomePage.jsx'
-import Auth from './components/Auth'
-import AddTodo from './components/AddTodo'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import Home from './pages/HomePage'
+import Login from './pages/LoginPage'
+import { useAuth } from './hooks/useAuth'
+
 import './assets/globals.css'
 
-function App() {
+export default function App() {
+  const { user, loading } = useAuth()
+
+  if (loading) return <p>Loading...</p>
+
   return (
-    <div>
-      <Auth />
-      <AddTodo />
-      <Home />
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={user ? <Home /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" replace />}
+        />
+      </Routes>
+    </Router>
   )
 }
-
-export default App
