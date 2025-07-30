@@ -1,4 +1,3 @@
-import AddTodo from '../components/AddTodo'
 import TodoList from '../components/TodoList'
 import { useAuth } from '../hooks/useAuth'
 import NavBar from '../components/NavBar'
@@ -16,7 +15,6 @@ export default function Home() {
     <div>
       <h1>My Task Manager</h1>
        <NavBar />
-      <AddTodo />
       <TodoList />
     </div>
   )

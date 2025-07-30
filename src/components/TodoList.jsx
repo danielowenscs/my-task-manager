@@ -3,6 +3,7 @@ import { db, auth } from '../firebase'
 import { collection, query, where, onSnapshot } from 'firebase/firestore'
 import { onAuthStateChanged } from 'firebase/auth'
 import TodoItem from './TodoItem'
+import AddTodo from '../components/AddTodo'
 
 export default function TodoList() {
   const [todos, setTodos] = useState([])
@@ -40,6 +41,7 @@ export default function TodoList() {
       {todos.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
+        <AddTodo />
     </div>
   )
 }

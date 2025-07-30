@@ -13,26 +13,29 @@ export default function Navbar() {
   }
 
   return (
-    <nav style={{ padding: '10px 20px', borderBottom: '1px solid #ccc' }}>
-      <Link to="/" style={{ marginRight: 20 }}>Home</Link>
-
-      {!user && <Link to="/login">Login</Link>}
-
-      {user && (
-        <button
-          onClick={handleLogout}
-          style={{
-            marginLeft: 20,
-            cursor: 'pointer',
-            background: 'none',
-            border: 'none',
-            color: 'blue',
-            textDecoration: 'underline',
-          }}
-        >
-          Logout
-        </button>
-      )}
-    </nav>
+    <header style={{ padding: '10px 20px', borderBottom: '1px solid var(--emerald-300)', marginBottom: 20 }}>
+      <nav style={{ maxWidth: 800, margin: '0 auto', display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <Link to="/" style={{ color: 'var(--emerald-700)', fontWeight: 'bold', textDecoration: 'none' }}>Home</Link>
+        <Link to="/about" style={{ color: 'var(--emerald-700)', textDecoration: 'none' }}>About</Link>
+        <div style={{ marginLeft: 'auto' }}>
+          {!user && <Link to="/login" style={{ color: 'var(--emerald-700)', textDecoration: 'none' }}>Login</Link>}
+          {user && (
+            <button
+              onClick={handleLogout}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--emerald-700)',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+            >
+              Logout
+            </button>
+          )}
+        </div>
+      </nav>
+    </header>
   )
 }
