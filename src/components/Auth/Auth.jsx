@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import { auth } from '../firebase'
+import { auth } from  '../../firebase'
 import { 
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
   signOut
 } from 'firebase/auth'
+import styles from './Auth.module.css'
 
 export default function Auth() {
   const [user, setUser] = useState(null)
-
   const provider = new GoogleAuthProvider()
 
   const signInWithGoogle = async () => {
@@ -32,14 +32,15 @@ export default function Auth() {
   }, [])
 
   return (
-    <div style={{ textAlign: 'center', marginTop: 20 }}>
+    <div className={styles.container}>
       {!user ? (
-        <button onClick={signInWithGoogle}>Sign In with Google</button>
+        <button onClick={signInWithGoogle} className={styles.button}>
+          Sign In with Google
+        </button>
       ) : (
-        <>
-          <p>Signed in as: {user.displayName}</p>
-          <button onClick={logOut}>Log Out</button>
-        </>
+        <button onClick={logOut} className={styles.button}>
+          Log Out
+        </button>
       )}
     </div>
   )
