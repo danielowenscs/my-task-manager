@@ -5,9 +5,10 @@
   background: var(--color-button);
   border-radius: 16px;
   padding: 24px;
-  max-width: 800px;
   width: 100%;
+  box-sizing: border-box;
 }
+
 
 .textSection {
   display: flex;

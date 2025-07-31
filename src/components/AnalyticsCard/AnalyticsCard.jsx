@@ -6,7 +6,7 @@ export default function AnalyticsCard({ title }) {
     <div className={styles.card}>
       <div className={styles.textSection}>
         <h3 className={styles.title}>
-          <span className={styles.highlight}>{title}Your Analytics</span>
+          <span className={styles.highlight}>{title}</span>
         </h3>
         <a href="#" className={styles.link}>Learn more</a>
       </div>
