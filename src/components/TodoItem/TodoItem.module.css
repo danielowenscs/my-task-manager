@@ -5,22 +5,32 @@
   background: var(--color-surface);
   border-radius: 12px;
   padding: 16px 20px;
-  box-shadow: var(--shadow-default);
   width: 100%;
   max-width: 600px;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
 }
 
-.title {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--color-button);
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+.card:hover {
+  filter: brightness(0.97);
 }
 
 .completed {
-  text-decoration: line-through;
-  opacity: 0.6;
+  background: var(--color-primary);
+}
+
+.text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-button);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.completed .text {
+  background: var(--color-surface);
+  color: var(--color-button);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .deleteBtn {

@@ -10,19 +10,18 @@ export default function TodoItem({ todo }) {
     await updateDoc(todoRef, { completed: !todo.completed })
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    e.stopPropagation()
     const todoRef = doc(db, 'todos', todo.id)
     await deleteDoc(todoRef)
   }
 
   return (
-    <div className={styles.card}>
-      <div
-        onClick={handleToggle}
-        className={`${styles.title} ${todo.completed ? styles.completed : ''}`}
-      >
-        {todo.text}
-      </div>
+    <div 
+      className={`${styles.card} ${todo.completed ? styles.completed : ''}`} 
+      onClick={handleToggle}
+    >
+      <span className={styles.text}>{todo.text}</span>
       <button className={styles.deleteBtn} onClick={handleDelete}>
         ✕
       </button>
