@@ -1,0 +1,31 @@
+.cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: var(--color-surface);
+  font-size: 1.2rem;
+}
+
+.cell:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.outside {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.today {
+  background: var(--color-primary);
+  color: var(--color-button);
+  font-weight: bold;
+}
+
+.date {
+  font-size: 1.2rem;
+}

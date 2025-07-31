@@ -2,6 +2,7 @@ import TodoList from '../components/TodoList/TodoList'
 import { useAuth } from '../hooks/useAuth'
 import NavBar from '../components/NavBar/NavBar'
 import HomeCardContainer from '../components/HomeCardContainer/HomeCardContainer'
+import Calendar from '../components/Calendar/Calendar'
 
 export default function Home() {
   const { user, loading } = useAuth()
@@ -16,6 +17,7 @@ export default function Home() {
     <div>
        <NavBar />
       <TodoList />
+      <Calendar/>
       <HomeCardContainer/>
     </div>
   )
