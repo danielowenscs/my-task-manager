@@ -1,6 +1,7 @@
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import styles from './TodoItem.module.css'
+import { format } from 'date-fns'
 
 export default function TodoItem({ todo }) {
   if (!todo || !todo.text) return null
@@ -16,15 +17,20 @@ export default function TodoItem({ todo }) {
     await deleteDoc(todoRef)
   }
 
+  const formattedDate = todo.dueDate ? format(todo.dueDate.toDate ? todo.dueDate.toDate() : todo.dueDate, 'MM/dd/yyyy') : ''
+
   return (
     <div 
       className={`${styles.card} ${todo.completed ? styles.completed : ''}`} 
       onClick={handleToggle}
     >
       <span className={styles.text}>{todo.text}</span>
-      <button className={styles.deleteBtn} onClick={handleDelete}>
-        ✕
-      </button>
+      <div className={styles.rightSection}>
+        {formattedDate && <span className={styles.date}>{formattedDate}</span>}
+        <button className={styles.deleteBtn} onClick={handleDelete}>
+          ✕
+        </button>
+      </div>
     </div>
   )
 }

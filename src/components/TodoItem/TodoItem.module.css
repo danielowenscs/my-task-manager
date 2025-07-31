@@ -11,10 +11,6 @@
   cursor: pointer;
 }
 
-.card:hover {
-  filter: brightness(0.97);
-}
-
 .completed {
   background: var(--color-primary);
 }
@@ -23,7 +19,6 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--color-button);
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .completed .text {
@@ -31,6 +26,17 @@
   color: var(--color-button);
   padding: 2px 6px;
   border-radius: 4px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: var(--color-button);
 }
 
 .deleteBtn {
